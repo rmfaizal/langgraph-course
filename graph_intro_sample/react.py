@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
-from langgraph.graph import MessagesState
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_tavily import TavilySearch
+from langgraph.graph import MessagesState
 
 load_dotenv()
 
@@ -19,4 +19,3 @@ def triple(num: float) -> float:
 tools = [TavilySearch(max_results=1), triple]
 
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0).bind_tools(tools)
-
